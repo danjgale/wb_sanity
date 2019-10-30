@@ -1,7 +1,6 @@
 # wb_sanity
-Python wrapper for everyday visualization with [Connectome Workbench](https://www.humanconnectome.org/software/connectome-workbench)
 
-This is a simple Python interface to performing standard every day visualization tasks in Connectome Workbench. You might have an atlas or a set or regions of interest that you just want to display on the surface, and maybe attach some values to each region (e.g., a weighting, a connectivity metric, a principal component loading). Or, you might want to project data in MNI coordinates onto a surface\*. Unfortunately, these simple tasks are not immediately obvious when using Connectome Workbench, which can be overwhelming for users. 
+This is a simple Python interface to performing standard every day visualization tasks in [Connectome Workbench](https://www.humanconnectome.org/software/connectome-workbench). You might have an atlas or a set or regions of interest that you just want to display on the surface, and maybe attach some values to each region (e.g., a weighting, a connectivity metric, a principal component loading). Or, you might want to project data in MNI coordinates onto a surface\*. Unfortunately, these simple tasks are not immediately obvious when using Connectome Workbench, which can be overwhelming for users. 
 
 Python was selected because of its quality neuroimaging/fMRI ecosystem that is continually growing. Therefore, this package makes it easy to integrate Connectome Workbench utilites into your Python neuroimaging projects. `wb_command` gets called under the hood, and `wb_sanity` makes it convenient to make or manipulate your `cifti` files, readying them for visualization. To actually display the visualizations, you'll need to use Connectome Workbench's `wb_viewer` itself. 
 
