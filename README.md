@@ -7,7 +7,7 @@ Python was selected because of its quality neuroimaging/fMRI ecosystem that is c
 
 ## What's in a name?
 
-`wb_sanity` is a tongue-and-cheek name that pokes fun at Connectome Workbench's powerful-yet-overwhelming nature (the name is inspired by [arxiv-sanity](http://www.arxiv-sanity.com/)). I should emphasize that Connectome Workbench is a *great* tool and serves its purpose very well, and the developers did a great job at building a real powerhouse. However, in my opinion, 1) it has a steep learning curve; and 2) the documentation, while excellent and thorough at describing its functions and their parameters, is sparse when it comes to simple use-cases and tutorials\*\* (i.e. you just want to use it as a basic visualization tool). I'm hoping that this will improve over time, and maybe this package can serve as a gateway to people using Connectome Workbench in its full capacity in their analyses.
+`wb_sanity` is a tongue-and-cheek name that pokes fun at Connectome Workbench's powerful-yet-overwhelming nature (the name is inspired by [arxiv-sanity](http://www.arxiv-sanity.com/)). I should emphasize that Connectome Workbench is a *great* tool and serves its purpose very well, and the developers did a great job at building a real powerhouse. However, in my opinion, 1) it has a steep learning curve; and 2) the documentation, while excellent and thorough at describing its functions and their parameters, is sparse when it comes to simple use-cases and tutorials\*\* (i.e. you just want to use it as a basic visualization tool). I'm hoping that this will improve over time, and maybe this package can serve as a gateway and encourage people to use Connectome Workbench in its full capacity in their analyses.
 
 ## Alternatives
 
@@ -38,6 +38,6 @@ pip install -e .
 - [Connectome Workbench Github](https://github.com/Washington-University/workbench)
 
 ---
-\*I'm aware that some call this a 'faux-pas' and actively discourage it (i.e. you should be doing all your analyses on the surface from the start, and projecting data from volume-space to surfaces introduces some inaccuracies). However, volume-based analysis is still very much ubiquitous; it is the dominant approach right now. So, projecting from volume to surface is extremely common and accepted by many. So, this is a disclaimer in the sense that if you want to be as accurate as possible, you should follow the recommendations of the people behind Connectome Workbench. If you want to do what many people consider as 'plenty good enough', proceed with caution!   \
+**\***I'm aware that some call this a 'faux-pas' and actively discourage it (i.e. you should be doing all your analyses on the surface from the start, and projecting data from volume-space to surfaces introduces some inaccuracies). However, volume-based analysis is still very much ubiquitous; it is the dominant approach right now. So, projecting from volume to surface is extremely common and accepted by many. So, this is a disclaimer in the sense that if you want to be as accurate as possible, you should follow the recommendations of the people behind Connectome Workbench. If you want to do what many people consider as 'plenty good enough', proceed with caution!
 
-\*\* Some great tutorials out there include ones by [Jo Etzel](https://mvpa.blogspot.com/2017/08/getting-started-with-connectome.html)
+**\*\*** Some great tutorials out there include ones by [Jo Etzel](https://mvpa.blogspot.com/2017/08/getting-started-with-connectome.html)
