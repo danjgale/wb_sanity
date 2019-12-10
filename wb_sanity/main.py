@@ -20,7 +20,7 @@ def _convert_to_text(label_img, vertex_file):
 def _to_cifti(vertex_file, output_img, template):
     """Convert vertex text file to cifti image"""
 
-    cmd = ['wb_command', '-cifti-convert', '-from-test', vertex_file, 
+    cmd = ['wb_command', '-cifti-convert', '-from-text', vertex_file, 
            template, output_img]
     print(' '.join(cmd))
     subprocess.call(cmd)
@@ -70,9 +70,10 @@ def make_scalar_map(input_img, region_spec, value_name, output_img, scalar_img,
     ----------
     input_img : str
         File path of existing CIfTI label file (.dlabel.nii)
-    region_spec : str
-        File path of a comma-separated region specification file (.csv). The
-        first row must be column names, and MUST include `Index`. 
+    region_spec : str or pandas.core.DataFrame
+        File path of a comma-separated region specification file (.csv) or an
+        existing pandas Dataframe. If a file, the first row must be column 
+        names. Column names MUST include `Index`. 
     value_name : str
         Column name in `region_spec` to set the value to assign each region.
     output_img : str
@@ -107,9 +108,12 @@ def make_scalar_map(input_img, region_spec, value_name, output_img, scalar_img,
     _convert_to_text(input_img, txt_file)
     input_vertices = pd.read_csv(txt_file, header=None)
 
+    if isinstance(region_spec, str):
+        region_spec = pd.read_csv(region_spec)
+
     if label_numbers is not None:
         mask = ~region_spec['Index'].isin(label_numbers)
-        region_df.loc[mask, value_name] = fill_value
+        region_spec.loc[mask, value_name] = fill_value
 
     map_dict = dict(zip(region_spec['Index'], region_spec[value_name]))
     map_dict[0] = fill_value
