@@ -25,7 +25,8 @@ setup(
     url='https://github.com/danjgale/wb_sanity',
     install_requires=[
         'numpy',
-        'pandas'
+        'pandas',
+        'nibabel'
     ],
     tests_require=test_deps,
     extras_require=extras,
