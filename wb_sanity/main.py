@@ -28,7 +28,7 @@ def _to_cifti(vertex_file, output_img, template):
 
 def make_label_map(input_img, label_numbers, output_img, fill_value=0):
     """Create a label file that shows only certain regions of interest from an
-    existing atlas.
+    existing atlas in CIfTI format.
 
     Parameters
     ----------
@@ -36,7 +36,7 @@ def make_label_map(input_img, label_numbers, output_img, fill_value=0):
         File path of existing CIfTI label file (.dlabel.nii)
     label_numbers : list of int
         Selected integer labels in `input_img` that you retain.
-    output_img : [type]
+    output_img : str
         File path of CIfTI label file (.dlabel.nii) that contains only 
         specified regions from `label_numbers`.  
     fill_value : int, optional
@@ -61,7 +61,8 @@ def make_label_map(input_img, label_numbers, output_img, fill_value=0):
 
 def make_scalar_map(input_img, region_spec, value_name, output_img, scalar_img,
                     label_numbers=None, fill_value=0):
-    """Assign arbitrary values/weightings to regions in an atlas
+    """Assign arbitrary values/weightings to regions in an atlas in CIfTI 
+    format
 
     The atlas regions can be restricted using `label_numbers`.
     
@@ -99,7 +100,6 @@ def make_scalar_map(input_img, region_spec, value_name, output_img, scalar_img,
     `.dscalar.nii`. Typically atlases provide both file types, so it is 
     recommended to use the one associated with the input `.dlabel.nii` file.
     """
-
     output_dir, out_file = os.path.split(output_img)
     fname = out_file.split('.')[0]
 
@@ -134,7 +134,7 @@ def vol_to_metric(vol_img, surface, output_img, mapping='trilinear'):
         (timeseries). 
     surface : str
         File path of GIfTI surface file (.surf.gii). 
-    output_img : [type]
+    output_img : str
         File path of the output surface. If `.shape.gii` or `.func.gii` is not
         provided, then `.shape.gii` will automatically be appended to the file
         name.
@@ -156,7 +156,6 @@ def vol_to_metric(vol_img, surface, output_img, mapping='trilinear'):
     the data to the surface that you are ultimately hoping to use to visualize
     your data. Best to test out a few and compare.
     """
-
     output_dir = os.path.dirname(output_img)
     os.makedirs(output_dir, exist_ok=True)
 
@@ -184,7 +183,7 @@ def vol_to_label(vol_img, surface, label_file, output_img):
         File path of GIfTI surface file (.surf.gii). 
     label_file : str
         File path of a label file (.txt). See notes for formatting. 
-    output_img : [type]
+    output_img : str
         File path of the output surface. If `.label.gii` is not provided, then
         it will automatically be appended to the file name.
 
@@ -211,8 +210,6 @@ def vol_to_label(vol_img, surface, label_file, output_img):
     the data to the surface that you are ultimately hoping to use to visualize
     your data. Best to test out a few and compare.
     """
-    
-
     if not output_img.endswith('.label.gii'):
         output_img += '.label.gii'
 
