@@ -7,23 +7,23 @@ import nibabel as nib
 
 pjoin = os.path.join
 
+
 def _convert_to_text(label_img, vertex_file):
     """Generate vertex file from a cifti image"""
     
-    cmd = 'wb_command -cifti-convert -to-text {} {}'.format(label_img,
-                                                            vertex_file)
-    print(cmd)
-    subprocess.call(cmd.split())
+    cmd = ['wb_command', '-cifti-convert', '-to-text', label_img, 
+            vertex_file]
+    print(' '.join(cmd))
+    subprocess.call(cmd)
 
 
 def _to_cifti(vertex_file, output_img, template):
     """Convert vertex text file to cifti image"""
 
-    cmd = 'wb_command -cifti-convert -from-text {} {} {}'.format(vertex_file,
-                                                                 template, 
-                                                                 output_img)
-    print(cmd)
-    subprocess.call(cmd.split())
+    cmd = ['wb_command', '-cifti-convert', '-from-test', vertex_file, 
+           template, output_img]
+    print(' '.join(cmd))
+    subprocess.call(cmd)
 
 
 def make_label_map(input_img, label_numbers, output_img, fill_value=0):
@@ -121,6 +121,8 @@ def make_scalar_map(input_img, region_spec, value_name, output_img, scalar_img,
     os.remove(txt_file)
 
 
+### Projection functions
+
 def vol_to_metric(vol_img, surface, output_img, mapping='trilinear'):
     """Project volume data to a metric file for displaying stat maps.
 
@@ -165,7 +167,7 @@ def vol_to_metric(vol_img, surface, output_img, mapping='trilinear'):
 
     cmd = ['wb_command', '-volume-to-surface-mapping', vol_img, surface, 
           output_img, f'-{mapping}']
-    print(''.join(cmd))
+    print(' '.join(cmd))
     subprocess.call(cmd)
 
 
@@ -220,7 +222,7 @@ def vol_to_label(vol_img, surface, label_file, output_img):
 
     cmd = ['wb_command', '-metric-label-import', tmp_file, label_file, 
            output_img]
-    print(''.join(cmd))
+    print(' '.join(cmd))
     subprocess.call(cmd)
     
     os.remove(tmp_file)
